@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ReliableDbProvider</name>
+    </assembly>
+    <members>
+        <member name="T:ReliableDbProvider.ReliableDbProviderServices">
+            <summary>
+            Db Provider Services for a <see cref="N:ReliableDbProvider"/>.
+            </summary>
+        </member>
+        <member name="F:ReliableDbProvider.ReliableDbProviderServices.Instance">
+            <summary>
+            Singleton instance of the <see cref="T:ReliableDbProvider.ReliableDbProviderServices"/> class.
+            </summary>
+        </member>
+        <member name="T:ReliableDbProvider.ReliableSqlDbTransaction">
+            <summary>
+            This class wraps a DbTransaction so that any access of the DbConnection gives the reliable sql connection.
+            </summary>
+        </member>
+        <member name="T:ReliableDbProvider.ReliableSqlClientProvider`1">
+            <summary>
+            Base class that allows you to easily create a Db Provider that provides a reliable sql connection based
+            on the specified transient error detecton strategy.
+            </summary>
+            <typeparam name="TTransientErrorDetectionStrategy">The transient error detection strategy to use</typeparam>
+        </member>
+        <member name="T:ReliableDbProvider.ReliableSqlCommand">
+            <summary>
+            A <see cref="T:System.Data.Common.DbCommand"/> implementation that wraps a <see cref="T:System.Data.SqlClient.SqlCommand"/> object such that any
+            queries that are executed are executed via a <see cref="T:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection"/>.
+            </summary>
+            <remarks>
+            Note: For this to work it requires that the Connection property be set with a <see cref="T:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection"/> object.
+            </remarks>
+        </member>
+        <member name="M:ReliableDbProvider.ReliableSqlCommand.#ctor(System.Data.SqlClient.SqlCommand)">
+            <summary>
+            Constructs a <see cref="T:ReliableDbProvider.ReliableSqlCommand"/>. with no associated connection
+            </summary>
+        </member>
+        <member name="M:ReliableDbProvider.ReliableSqlCommand.op_Explicit(ReliableDbProvider.ReliableSqlCommand)~System.Data.SqlClient.SqlCommand">
+            <summary>
+            Explicit type-casting between a <see cref="T:ReliableDbProvider.ReliableSqlCommand"/> and a <see cref="T:System.Data.SqlClient.SqlCommand"/>.
+            </summary>
+            <param name="command">The <see cref="T:ReliableDbProvider.ReliableSqlCommand"/> being casted</param>
+            <returns>The underlying <see cref="T:System.Data.SqlClient.SqlCommand"/> being proxied.</returns>
+        </member>
+        <member name="P:ReliableDbProvider.ReliableSqlCommand.Current">
+            <summary>
+            The underlying <see cref="T:System.Data.SqlClient.SqlCommand"/> being proxied.
+            </summary>
+        </member>
+        <member name="P:ReliableDbProvider.ReliableSqlCommand.ReliableConnection">
+            <summary>
+            The <see cref="T:ReliableDbProvider.ReliableSqlDbConnection"/> wrapper that has been assigned to the command via the Connection property or the ctor.
+            </summary>
+        </member>
+        <member name="P:ReliableDbProvider.ReliableSqlCommand.ReliableDbTransaction">
+            <summary>
+            Wrapper for any transaction.
+            </summary>
+        </member>
+        <member name="P:ReliableDbProvider.ReliableSqlCommand.DbConnection">
+            <summary>
+            Returns the underlying <see cref="T:System.Data.SqlClient.SqlConnection"/> and expects a <see cref="T:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection"/> when being set.
+            </summary>
+        </member>
+        <member name="T:ReliableDbProvider.ReliableSqlDbConnection">
+            <summary>
+            Wrap <see cref="T:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection"/> in a class that extends <see cref="T:System.Data.Common.DbConnection"/>
+            so internal type casts within ADO.NET work.
+            </summary>
+        </member>
+        <member name="M:ReliableDbProvider.ReliableSqlDbConnection.#ctor(Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection)">
+            <summary>
+            Constructs a <see cref="T:ReliableDbProvider.ReliableSqlDbConnection"/> to wrap around the given <see cref="T:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection"/>.
+            </summary>
+            <param name="connection">The <see cref="T:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection"/> to wrap</param>
+        </member>
+        <member name="M:ReliableDbProvider.ReliableSqlDbConnection.op_Explicit(ReliableDbProvider.ReliableSqlDbConnection)~System.Data.SqlClient.SqlConnection">
+            <summary>
+            Explicit type-casting between <see cref="T:ReliableDbProvider.ReliableSqlDbConnection"/> and <see cref="T:System.Data.SqlClient.SqlConnection"/>.
+            </summary>
+            <param name="connection">The <see cref="T:ReliableDbProvider.ReliableSqlDbConnection"/> being casted</param>
+            <returns>The underlying <see cref="T:System.Data.SqlClient.SqlConnection"/></returns>
+        </member>
+        <member name="M:ReliableDbProvider.ReliableSqlDbConnection.Dispose">
+            <summary>
+            Disposes the underling <see cref="T:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection"/> as well as the current class.
+            </summary>
+        </member>
+        <member name="P:ReliableDbProvider.ReliableSqlDbConnection.ReliableConnection">
+            <summary>
+            The underlying <see cref="T:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection"/>.
+            </summary>
+        </member>
+        <member name="T:ReliableDbProvider.SqlAzureWithTimeoutRetries.SqlAzureProvider">
+            <summary>
+            Db provider that will result in reliable connections to a SQL Azure database that retries for timeouts.
+            </summary>
+        </member>
+        <member name="F:ReliableDbProvider.SqlAzureWithTimeoutRetries.SqlAzureProvider.Instance">
+            <summary>
+            Singleton instance of the provider.
+            </summary>
+        </member>
+        <member name="E:ReliableDbProvider.SqlAzureWithTimeoutRetries.SqlAzureProvider.CommandRetry">
+            <summary>
+            Event that is fired when a command is retried using this provider.
+            </summary>
+        </member>
+        <member name="E:ReliableDbProvider.SqlAzureWithTimeoutRetries.SqlAzureProvider.ConnectionRetry">
+            <summary>
+            Event that is fired when a connection is retried using this provider.
+            </summary>
+        </member>
+        <member name="T:ReliableDbProvider.SqlAzureWithTimeoutRetries.SqlAzureConnection">
+            <summary>
+            Wraps a <see cref="T:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection"/> in a <see cref="T:System.Data.Common.DbConnection"/> for the <see cref="T:ReliableDbProvider.SqlAzureWithTimeoutRetries.SqlAzureProvider"/> Db Provider.
+            </summary>
+        </member>
+        <member name="M:ReliableDbProvider.SqlAzureWithTimeoutRetries.SqlAzureConnection.#ctor(Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection)">
+            <summary>
+            Create a <see cref="T:ReliableDbProvider.SqlAzure.SqlAzureConnection"/>.
+            </summary>
+            <param name="connection">The <see cref="T:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection"/> to wrap</param>
+        </member>
+        <member name="T:ReliableDbProvider.SqlAzure.SqlAzureTransientErrorDetectionStrategy">
+            <summary>
+            Transient error detection strategy for SQL Azure that is a copy of the Enterprise Library detection strategy, but adds in missing codes.
+            </summary>
+        </member>
+        <member name="T:ReliableDbProvider.SqlAzure.RetryStrategies">
+            <summary>
+            Supplies some predefined retry strategies.
+            </summary>
+        </member>
+        <member name="F:ReliableDbProvider.SqlAzure.RetryStrategies.DefaultCommandStrategy">
+            <summary>
+            Default command retry strategy - Incremental every 1s for 10 retries.
+            </summary>
+        </member>
+        <member name="F:ReliableDbProvider.SqlAzure.RetryStrategies.DefaultConnectionStrategy">
+            <summary>
+            Default connection retry strategy - Exponential Backoff 10 retries from 1 to 30s backoffs with an increase of 10s.
+            </summary>
+        </member>
+        <member name="T:ReliableDbProvider.SqlAzure.SqlAzureProvider">
+            <summary>
+            Db provider that will result in reliable connections to a SQL Azure database.
+            Will not retry for timeouts, if you need that then use the SqlAzureProvider in the ReliableDbProvider.SqlAzureWithTimeoutRetries namespace.
+            </summary>
+        </member>
+        <member name="F:ReliableDbProvider.SqlAzure.SqlAzureProvider.Instance">
+            <summary>
+            Singleton instance of the provider.
+            </summary>
+        </member>
+        <member name="E:ReliableDbProvider.SqlAzure.SqlAzureProvider.CommandRetry">
+            <summary>
+            Event that is fired when a command is retried using this provider.
+            </summary>
+        </member>
+        <member name="E:ReliableDbProvider.SqlAzure.SqlAzureProvider.ConnectionRetry">
+            <summary>
+            Event that is fired when a connection is retried using this provider.
+            </summary>
+        </member>
+        <member name="T:ReliableDbProvider.SqlAzure.SqlAzureConnection">
+            <summary>
+            Wraps a <see cref="T:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection"/> in a <see cref="T:System.Data.Common.DbConnection"/> for the <see cref="T:ReliableDbProvider.SqlAzure.SqlAzureProvider"/> Db Provider.
+            </summary>
+        </member>
+        <member name="M:ReliableDbProvider.SqlAzure.SqlAzureConnection.#ctor(Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection)">
+            <summary>
+            Create a <see cref="T:ReliableDbProvider.SqlAzure.SqlAzureConnection"/>.
+            </summary>
+            <param name="connection">The <see cref="T:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.SqlAzure.ReliableSqlConnection"/> to wrap</param>
+        </member>
+    </members>
+</doc>

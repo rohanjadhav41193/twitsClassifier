@@ -1,0 +1,214 @@
+﻿body 
+{
+    background-image:url(http://localhost:11020/Images/confession.jpg);
+}
+
+#border 
+{
+    position: absolute;
+    border: solid #0bbff0;
+    height: 150px;
+    width:95%;
+    margin-left:20px;
+    color: white;
+    background-color:#0bcff0;
+    font-family: 'Alex Brush';
+    font-size:30px;
+    padding-top:10px;
+    text-align: center;
+}
+
+/*#border 
+{
+    position: absolute;
+    border: solid #0bbff0;
+    height: 150px;
+    width:95%;
+    margin-left:20px;
+    color: white;
+    background-color:#0bcff0;
+    font-family: myFirstFont;
+    padding-left:20px;
+    text-align: center;
+}*/
+
+
+#logo 
+{
+    position: absolute;
+    border-top-left-radius: 2em;
+    border-bottom-right-radius: 2em;
+    border-top-right-radius: 2em;
+    border-bottom-left-radius: 2em;
+    margin-left:50px;
+    width:130px;
+    height: 136px;
+    top: 20px;
+    left: 6px;
+}
+
+
+.tabs 
+{
+    width:94%;
+    position:absolute;
+    margin-top:130px;
+    top: 30px;
+    height: 48px;
+    right:17px;
+}
+
+.tab-links
+{
+    /*padding-top:10px;*/
+    height: 49px;
+    margin-left:20px;
+}
+
+.tab-links:after 
+{
+        display:block;
+        clear:both;
+        content:'';
+}
+ 
+.tab-links li 
+{
+
+        float:right;
+        list-style:none;
+        padding-left:10px;
+        
+}
+ 
+.tab-links a 
+{
+            padding:10px;
+            display:inline-block;
+            background-color:none;
+            font-size:16px;
+            font-weight:600;
+            color:darkblue;
+            width: 142px;
+}
+
+.tab-links a:hover
+{
+        display:inline-block;
+        background-color:#0bcff0;
+        color:white;
+
+}
+ 
+li.active a, li.active a:hover 
+{
+        display:inline-block;
+        background-color:white;
+        color:#4c4c4c;
+        width: 53px;
+}
+
+@font-face {
+    font-family: myFirstFont;
+    src:url(http://localhost:11020/AlexBrush-Regular.ttf);
+}
+
+#content
+{
+    border-style: solid;
+    border-color: inherit;
+    border-width: 1px;
+    position: absolute;
+    top:240px;
+    height:600px;
+    margin-bottom:20px;
+    width:800px;
+    left: 14px;
+    margin-left:20px;
+    margin-right:200px;
+    right: 284px;
+}
+
+/*#contentList
+{
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    position: absolute;
+    margin-left:850px;
+    top:200px;
+    height:600px;
+    background-color:pink;
+    width:33%;
+}*/
+
+#contentleft
+{
+    border-style:none;
+    border-color: inherit;
+    border-width: 1px;
+    position:absolute;
+    top:210px;
+    height:600px;
+    margin-bottom:20px;
+    width:250px;
+    left: 14px;
+    margin-left:20px;
+    /*right: 284px;*/
+
+}
+#contentmain
+{
+        width:58%;
+        height:600px;
+        position:absolute;
+        margin-left:285px;
+        margin-top:210px;
+        float:left;
+        top: 2px;
+        left: 14px;
+        border-style:none;
+        border-color: inherit;
+         border-radius: 2px;
+        border-width: 1px;
+}
+
+#contentright
+{
+    width:210px;
+    position:absolute;
+    height:600px;
+    border-style:none;
+    margin-top:210px;
+    margin-left:80%;
+    top: 2px;
+    left: 14px;
+}
+
+#menu
+{
+    position:absolute;
+    height:50px;
+    width:250px;
+    top:30px;
+    right:-60px;
+    color:white;
+}
+
+a
+{
+    padding-left:1em;
+    color:white;
+}
+
+a:hover
+{
+    font-family:'Alex Brush';
+    font-size:larger;
+}
+
+h3
+{
+    color:darkblue;
+    font-family:'Alex Brush';
+}

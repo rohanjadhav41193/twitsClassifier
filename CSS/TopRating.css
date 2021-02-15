@@ -1,0 +1,18 @@
+﻿body {
+}
+h3
+{
+    text-align:center;
+    margin-top:20px;
+}
+.list
+{
+   
+     height: 400px;
+        width:65%;
+        margin-left:20%;
+        margin-top: 60px;
+  border: 1px solid #42464b;
+  border-radius: 6px;
+  
+}

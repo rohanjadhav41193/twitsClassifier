@@ -1,0 +1,49 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage2.master.cs" Inherits="MasterPage2" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="CSS/Master2.css" rel="stylesheet" />
+    <style type="text/css">
+        #form1 {
+            height: 15px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="border">
+        <br />
+
+        <h2>Confess,View and Share about the things you Love..</h2> 
+        <br />
+          </div>
+        <img id="logo" src="Images/NewLogo.jpg" alt="logo" />
+        <div id="menu">
+            <a href="Home2.aspx">Home</a>
+            <a href="Login.aspx">Login</a>
+        </div>
+
+          <%--  <div class="tabs">
+            <ul class="tab-links">
+                <li><a href="RecentConfessions.aspx">Recent Confessions</a></li>
+                <li><a href="TopRating.aspx">Top Ratings</a></li>
+                 <li><a href="#tab4">Confess ?</a></li>
+                 <li><a href="Signup.aspx">Sign Up Here</a></li>
+            </ul>
+     </div>--%>
+             
+        <div id="contentmain">
+            <asp:ContentPlaceHolder ID="ContentMain" runat="server">
+
+            </asp:ContentPlaceHolder>
+
+        </div>
+      
+    </form>
+</body>
+</html>

@@ -1,0 +1,55 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <!-- Liabraries Added Here -->
+
+    <link href="CSS/YouthMaster.css" rel="stylesheet" />
+    <script src="JS/jquery-2.2.0.min.js"></script>
+    <script src="JS/YouthMaster.js"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="border">
+        <br />
+
+        <h2>Confess,View and Share about the things you Love..</h2> 
+        <br />
+          </div>
+       
+        <div id="menu">
+            <a href="profile.aspx">Home</a>
+            <a href="Home2.aspx">Logout</a>
+        </div>
+    
+        <img id="logo" src="Images/NewLogo.jpg" alt="logo" />
+       <div class="tabs">
+                <ul class="tab-links">
+                <li><a href="TopRating.aspx">Top Ratings</a></li>
+                 <li><a href="confess.aspx" onclick="Lnk_Confess">Confess ?</a></li>
+                 <li><a href="tweet.aspx">Tweeter</a></li>
+            </ul>
+     </div>
+        <div id="contentleft">
+                   <asp:ContentPlaceHolder ID="ContentLeft" runat="server">
+                   </asp:ContentPlaceHolder>
+               </div>
+        <div id="contentmain">
+            <asp:ContentPlaceHolder ID="ContentMain" runat="server">
+
+            </asp:ContentPlaceHolder>
+
+        </div>
+        <div id="contentright">
+            <asp:ContentPlaceHolder ID="ContentRight" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+</form>
+</body>
+</html>
